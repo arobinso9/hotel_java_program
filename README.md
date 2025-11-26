@@ -30,7 +30,7 @@ Demonstrates proper constructor chaining and inheritance
 Class Documentation
 
 Below is a summary of all major classes in the project.
-# Person.java
+### Person.java
 Base class representing shared traits for both Guests and Employees.
 Fields:
 First name
