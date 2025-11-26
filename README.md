@@ -1,244 +1,87 @@
-Hotel Reservation System 
+🏨 Hotel Reservation System
 
-This project implements a fully object-oriented Hotel Reservation System using Java.
-It demonstrates strong OOP design including:
+This program is a fully object-oriented Hotel Reservation System written in Java.
+It demonstrates inheritance, composition, encapsulation, polymorphism, enums, and custom exception handling through a realistic hotel management scenario.
 
-Inheritance
 
-Composition
+<br>
+🎮 Features
 
-Custom exceptions
+Guest Management: Add, store, and validate guest details such as name, contact info, and reservation ID.
 
-Copy constructors
+Employee Management: Track hotel employees with ID, role, and hourly rate.
 
-Polymorphism
+Room Management: Handle room numbers, types, nightly rates, and booking status.
 
-Encapsulation
+Reservations: Create, validate, and manage reservations with check-in and check-out dates.
 
-Enum usage
+Error Handling: Prevent duplicates and invalid data through multiple custom exceptions.
 
-Aggregation of objects inside a Hotel
+Organized Architecture: All data is managed through a central Hotel class.
 
-The system allows creation and management of:
+<br>
+🛠️ Technical Details
+Object-Oriented Structure
 
-Guests
+Person → Base class for shared info
 
-Employees
+Guest / Employee → Inherit from Person
 
-Rooms
+Hotel → Aggregates guests, employees, rooms, reservations
 
-Reservations
+Reservation → Connects Guest + Room + Dates
+<br>
+Enums: Gender, BookingStatus
 
-Booking statuses
+Custom Exceptions:
+GuestExistsException
 
-Hotel operations
+EmployeeExistsException
 
-Key Features
-
-Add guests, employees, rooms, and reservations
-
-Prevent duplicates using custom “exists” exceptions
-
-Validate dates and pricing using custom error types
-
-Query, print, and manage hotel data
-
-Rich toString() output formatting
-
-Demonstrates proper constructor chaining and inheritance
-
-Class Documentation
-
-Below is a summary of all major classes in the project.
-
-### Person.java
-
-Base class representing shared traits for both Guests and Employees.
-
-Fields:
-
-First name
-
-Last name
-
-Gender
-
-Address
-
-Birthdate
-
-Used via inheritance by:
-
-Guest
-
-Employee
-
-Includes constructors, validation, getters, and overridden toString().
-
-### Guest.java
-
-Extends Person and represents a hotel guest.
-Contains additional fields: reservation number, phone, email.
-
-Implements:
-
-Validation
-
-Copy constructor
-
-equals() using reservation number
-
-toString() for formatted printing
-
-### Employee.java
-
-Also extends Person.
-Adds:
-
-Employee ID
-
-Job role
-
-Pay rate
-
-Throws InvalidRateException for invalid pay rates.
-
-### Address.java
-
-Represents a mailing address.
-Provides formatted toString() output.
-
-### Gender.java
-
-An enum representing:
-
-MALE
-
-FEMALE
-
-OTHER
-
-### Room.java
-
-Represents a hotel room with:
-
-Room number
-
-Room type
-
-Rate
-
-Booking status
-
-Throws InvalidRateException for invalid nightly rates.
-
-### BookingStatus.java
-
-Enum representing:
-
-AVAILABLE
-
-RESERVED
-
-OCCUPIED
-
-OUT_OF_SERVICE
-
-Used by Room and Reservation.
-
-### Reservation.java
-
-Represents a booking between a Guest and a Room.
-
-Stores:
-
-Guest
-
-Room
-
-Check-In date
-
-Check-Out date
-
-Confirmation number
-
-Validates:
-
-Date order
-
-Availability
-
-Conflicts
-
-Uses exceptions:
-
-InvalidDateException
+RoomExistsException
 
 ReservationExistsException
 
 ReservationNotFoundException
 
-### Hotel.java
+InvalidDateException
 
-The main aggregation class.
-Manages collections of:
+InvalidRateException
 
-Guests
+<br>
 
-Employees
+📂 Class Overview
+**Person**
 
-Rooms
+Stores first name, last name, gender, address, and birthdate.
 
-Reservations
+**Guest**
 
-Provides methods to:
+Adds reservation number, phone number, email.
+Overrides equals() to compare based on reservation number.
 
-Add/update/remove items
+**Employee**
 
-Search for guests, employees, rooms
+Adds employee ID, role, and pay rate.
 
-Create and cancel reservations
+**Address**
 
-Print all records
+Stores street, city, state, and ZIP code.
 
-Prevents duplicates via custom exceptions.
+**Room**
 
-Custom Exceptions
+Stores room number, room type, rate, and booking status.
 
-The project includes multiple custom exception types:
+**Reservation**
 
-Exception	Purpose
-InvalidRateException	Thrown when room or employee rates are invalid
-InvalidDateException	Thrown for invalid reservation dates
-GuestExistsException	Prevents duplicate guests
-EmployeeExistsException	Prevents duplicate employees
-RoomExistsException	Prevents duplicate rooms
-ReservationExistsException	Prevents duplicate reservations
-ReservationNotFoundException	Thrown when searching for a missing reservation
-ClientCode.java
+Stores guest, room, check-in, and check-out dates.
+Validates date order and room availability.
 
-This is the driver program used to:
+**Hotel**
 
-Instantiate hotel objects
+Main system manager.
+Contains lists of:
 
-Add sample guests, employees, rooms
+Guests, Employees, Rooms, Reservations
 
-Create reservations
-
-Print system output
-
-It demonstrates correct usage of all classes.
-
-UML-Style Inheritance Diagram
-                   Person
-                  /      \
-             Guest       Employee
-
-
-Aggregation in Hotel:
-
-Hotel
- ├── List<Guest>
- ├── List<Employee>
- ├── List<Room>
- └── List<Reservation>
+Provides methods to add/search/manage all components
